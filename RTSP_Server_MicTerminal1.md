@@ -1,4 +1,5 @@
-# Install
+# Using MediaMTX to stream audio from mic
+Docker significantly complicated the process, mostly tripping up on passing and identifying the correct devices within the container. Given the device does nothing else and the install turned out to be very simple, just run it natively.
 ## System
 DietPI Installed per guidance for specific device
 
