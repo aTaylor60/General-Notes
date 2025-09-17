@@ -67,3 +67,5 @@ sudo systemctl start mediamtx
 
 # TODO:
 * Reboot every night if needed?
+
+Lav Mic: https://github.com/mcguirepr89/BirdNET-Pi/discussions/39#discussioncomment-2180372
