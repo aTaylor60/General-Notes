@@ -15,12 +15,14 @@ Edit VM Drive size
 2. run qemu-img resize vmdisk.img +10G to increase image size by 10Gb
 3. start the VM, resize the partitions and LVM structure within it normally. mini-tool.com free partition manager can reolocate the recovery partition
 
+Non-comprehensive list of files edited or added during setup
 
 /etc/libvirt/hooks/kvm.conf
 
     ## Virsh devices
     VIRSH_GPU_VIDEO=pci_0000_06_00_0
     VIRSH_GPU_AUDIO=pci_0000_06_00_1
+
 
 home/andrew/.looking-glass-client.ini
 
@@ -48,9 +50,11 @@ home/andrew/.looking-glass-client.ini
     escapeKey=70
     autoCapture=yes
 
+
 etc/udev/rules.d/99-kbmfr.rules
 
     SUBSYSTEM=="kvmfr", OWNER="libvirt-qemu", GROUP="kvm", MODE="0666"
+
 
 etc/libvirt/qeum.conf
 Uncomment to following block and add the last line "/dev/kvmfr0"
@@ -62,15 +66,18 @@ Uncomment to following block and add the last line "/dev/kvmfr0"
         "/dev/kvmfr0"
     ]
 
+
 etc/modules-load.d/kvmfr.conf
 
     # 3. KVMFR Looking Glass module
     kvmfr
 
+
 etc/modprobe.d/kvmfr.conf
 
     #KVMFR Looking Glass module
     options kvmfr static_size_mb=64
+
 
 etc/tmpfiles.d/10-looking-glass.conf
 
