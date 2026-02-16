@@ -1,0 +1,72 @@
+To allow internet traffic through cirtual network 'default': NAT
+
+UFW Rules to add
+sudo ufw route allow in on virbr0
+sudo ufw route allow out on virbr0
+sudo ufw allow in on virbr0
+
+Bridged network does not have the same firewall problems. Bridge is basically like an internal switch.
+1. Delete existing basic wired connection
+2. Create bridge and attach ethernet adapter to it (nmtui just worked, plasma nm not so much)
+3. In NIC config of VM choose bridge and eneter the name of the established bridge
+
+Edit VM Drive size
+1. stop the VM
+2. run qemu-img resize vmdisk.img +10G to increase image size by 10Gb
+3. start the VM, resize the partitions and LVM structure within it normally. mini-tool.com free partition manager can reolocate the recovery partition
+
+
+/etc/libvirt/hooks/kvm.conf
+    ## Virsh devices
+    VIRSH_GPU_VIDEO=pci_0000_06_00_0
+    VIRSH_GPU_AUDIO=pci_0000_06_00_1
+
+home/andrew/.looking-glass-client.ini
+    [win]
+    title=looking-glass-client
+    size=1920x1080
+    keepAspect=yes
+    borderless=no
+    fullScreen=no
+    uiFont=pango:Iosevka
+    uiSize=14
+    maximize=yes
+    showFPS=yes
+
+    [egl]
+    vsync=yes
+    multisample=yes
+    scale=0
+
+    [wayland]
+    warpSupport=yes
+    fractionScale=yes
+
+    [input]
+    escapeKey=70
+    autoCapture=yes
+
+etc/udev/rules.d/99-kbmfr.rules
+    SUBSYSTEM=="kvmfr", OWNER="libvirt-qemu", GROUP="kvm", MODE="0666"
+
+etc/libvirt/qeum.conf
+Uncomment to following block and add the last line "/dev/kvmfr0"
+    cgroup_device_acl = [
+        "/dev/null", "/dev/full", "/dev/zero",
+        "/dev/random", "/dev/urandom",
+        "/dev/ptmx", "/dev/userfaultfd",
+        "/dev/kvmfr0"
+    ]
+
+etc/modules-load.d/kvmfr.conf
+    # 3. KVMFR Looking Glass module
+    kvmfr
+
+etc/modprobe.d/kvmfr.conf
+    #KVMFR Looking Glass module
+    options kvmfr static_size_mb=64
+
+etc/tmpfiles.d/10-looking-glass.conf
+    # Type Path               Mode UID  GID Age Argument
+
+    f /dev/shm/looking-glass 0660 andrew kvm -
