@@ -1,4 +1,4 @@
-To allow internet traffic through cirtual network 'default': NAT
+**To allow internet traffic through cirtual network 'default': NAT**
 
 UFW Rules to add
 sudo ufw route allow in on virbr0
@@ -10,12 +10,12 @@ Bridged network does not have the same firewall problems. Bridge is basically li
 2. Create bridge and attach ethernet adapter to it (nmtui just worked, plasma nm not so much)
 3. In NIC config of VM choose bridge and eneter the name of the established bridge
 
-Edit VM Drive size
+**Edit VM Drive size**
 1. stop the VM
 2. run qemu-img resize vmdisk.img +10G to increase image size by 10Gb
 3. start the VM, resize the partitions and LVM structure within it normally. mini-tool.com free partition manager can reolocate the recovery partition
 
-Non-comprehensive list of files edited or added during setup
+**Non-comprehensive list of files edited or added during setup**
 
 /etc/libvirt/hooks/kvm.conf
 
