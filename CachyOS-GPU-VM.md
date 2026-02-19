@@ -25,30 +25,35 @@ Bridged network does not have the same firewall problems. Bridge is basically li
 
 
 home/andrew/.looking-glass-client.ini
+OpenGL renderer seems much more stable than EGL (no crashes of client, stable output when not the window in focus)
 
+    [app]
+    renderer=OpenGL
+    
     [win]
     title=looking-glass-client
-    size=1920x1080
+    size=2560x1440
     keepAspect=yes
     borderless=no
-    fullScreen=no
+    fullScreen=yes
     uiFont=pango:Iosevka
     uiSize=14
     maximize=yes
     showFPS=yes
-
-    [egl]
-    vsync=yes
-    multisample=yes
-    scale=0
-
+    
+    #[egl]
+    #vsync=yes
+    #multisample=yes
+    #scale=0
+    
     [wayland]
     warpSupport=yes
     fractionScale=yes
-
+    
     [input]
     escapeKey=70
     autoCapture=yes
+
 
 
 etc/udev/rules.d/99-kbmfr.rules
