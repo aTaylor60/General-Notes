@@ -1,3 +1,6 @@
+Solid guide to implement mostly:
+https://gist.github.com/safwyls/96b6cf4b49e04af2668b7a77502e5ff2
+
 **To allow internet traffic through cirtual network 'default': NAT**
 
 UFW Rules to add
