@@ -92,3 +92,9 @@ etc/tmpfiles.d/10-looking-glass.conf
     # Type Path               Mode UID  GID Age Argument
 
     f /dev/shm/looking-glass 0660 andrew kvm -
+
+
+/etc/libvirt/network.conf
+Add the following at the bottom. This may be commented out at system update.
+
+    firewall_backend = "nftables"
