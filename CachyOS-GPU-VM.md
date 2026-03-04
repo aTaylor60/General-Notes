@@ -1,8 +1,9 @@
 Solid guide to implement mostly:
 https://gist.github.com/safwyls/96b6cf4b49e04af2668b7a77502e5ff2
+
 Others referenced:
-https://gist.github.com/r0kk0/5fc69b0685dda898845597e9b8259014
-https://github.com/bryansteiner/gpu-passthrough-tutorial
+1. https://gist.github.com/r0kk0/5fc69b0685dda898845597e9b8259014
+2. https://github.com/bryansteiner/gpu-passthrough-tutorial
 
 **To allow internet traffic through cirtual network 'default': NAT**
 
